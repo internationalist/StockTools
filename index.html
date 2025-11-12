@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percent Difference Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">StockTools</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link active" data-section="percent-difference">Percent Difference</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-section="percent-from">Percent From</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-section="about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Percent Difference Section -->
+    <div class="container section active" id="percent-difference">
+        <header>
+            <h1>Percent Difference Calculator</h1>
+            <p>Calculate the percentage difference between two numbers</p>
+        </header>
+
+        <main class="percent_diff">
+            <div class="input-group">
+                <label for="firstNumber">First Number (Original):</label>
+                <input type="number" id="firstNumber" placeholder="Enter first number" step="any">
+            </div>
+
+            <div class="input-group">
+                <label for="secondNumber">Second Number (New):</label>
+                <input type="number" id="secondNumber" placeholder="Enter second number" step="any">
+            </div>
+
+            <div class="button-group">
+                <button id="calculateBtn" class="btn calculate">Calculate</button>
+                <button id="clearBtn" class="btn clear">Clear</button>
+            </div>
+
+            <div id="result" class="result">
+                <p>Enter numbers above to see the percentage difference</p>
+            </div>
+
+            <div id="explanation" class="explanation"></div>
+        </main>
+
+        <footer>
+            <p>Formula: ((Second - First) / First) × 100</p>
+        </footer>
+    </div>
+
+    <!-- Percent From Section -->
+    <div class="container section" id="percent-from">
+        <header>
+            <h1>Percent From</h1>
+            <p>Calculate what number a percentage represents</p>
+        </header>
+
+        <main class="percent_from">
+            <div class="input-group">
+                <label for="baseNumber">Base Number:</label>
+                <input type="number" id="baseNumber" placeholder="Enter base number" step="any">
+            </div>
+
+            <div class="input-group">
+                <label for="percentSelect">Percent:</label>
+                <select id="percentSelect" class="percent-select">
+                    <option value="1">1%</option>
+                    <option value="2">2%</option>
+                    <option value="3">3%</option>
+                    <option value="5">5%</option>
+                    <option value="10">10%</option>
+                    <option value="15">15%</option>
+                    <option value="20">20%</option>
+                    <option value="25">25%</option>
+                    <option value="30">30%</option>
+                    <option value="50">50%</option>
+                    <option value="75">75%</option>
+                    <option value="100">100%</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="subtractCheckbox">
+                    <span>Subtract (instead of add)</span>
+                </label>
+            </div>
+
+            <div class="button-group">
+                <button id="calculatePercentFrom" class="btn calculate">Calculate</button>
+                <button id="clearPercentFrom" class="btn clear">Clear</button>
+            </div>
+
+            <div id="percentFromResult" class="result">
+                <p>Enter a base number and select a percent to calculate</p>
+            </div>
+
+            <div id="percentFromExplanation" class="explanation"></div>
+        </main>
+
+        <footer>
+            <p>Formula: Base Number ± (Base Number × Percent / 100)</p>
+        </footer>
+    </div>
+
+    <!-- About Section -->
+    <div class="container section" id="about">
+        <header>
+            <h1>About StockTools</h1>
+            <p>Your comprehensive stock analysis toolkit</p>
+        </header>
+
+        <main>
+            <div style="padding: 20px 0;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Features:</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;">📊 Percent Difference Calculator</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;">➕ Percent From Calculator</li>
+                </ul>
+                <p style="margin-top: 30px; text-align: center; color: #666;">Built with ❤️ for stock enthusiasts</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
