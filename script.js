@@ -280,3 +280,131 @@ function handlePercentFromClear() {
     document.getElementById('percentFromExplanation').innerHTML = '';
     document.getElementById('baseNumber').focus();
 }
+
+// ============================================
+// COST AVERAGE CALCULATION FUNCTIONALITY
+// ============================================
+
+/**
+ * Calculate cost average for stock purchases
+ */
+function handleCostAvgCalculate() {
+    try {
+        const purchases = [];
+        let totalCost = 0;
+        let totalShares = 0;
+        
+        // Collect all purchase data
+        for (let i = 1; i <= 4; i++) {
+            const shares = parseFloat(document.getElementById(`shares${i}`).value);
+            const price = parseFloat(document.getElementById(`price${i}`).value);
+            
+            // Skip empty entries
+            if (isNaN(shares) && isNaN(price)) {
+                continue;
+            }
+            
+            // Validate individual entries
+            if (isNaN(shares) || isNaN(price)) {
+                throw new Error(`Purchase ${i}: Please enter both shares and price, or leave both empty`);
+            }
+            
+            if (shares < 0 || price < 0) {
+                throw new Error(`Purchase ${i}: Values cannot be negative`);
+            }
+            
+            // Only include if shares > 0
+            if (shares > 0) {
+                const cost = shares * price;
+                purchases.push({ shares, price, cost, index: i });
+                totalShares += shares;
+                totalCost += cost;
+            }
+        }
+        
+        // Check if at least one purchase was entered
+        if (purchases.length === 0) {
+            throw new Error('Please enter at least one purchase with shares greater than 0');
+        }
+        
+        // Calculate average cost
+        const avgCost = totalCost / totalShares;
+        
+        // Build breakdown text
+        let breakdownText = '<strong>Calculation Breakdown:</strong><br>';
+        purchases.forEach(p => {
+            breakdownText += `• Purchase ${p.index}: ${p.shares} shares @ $${p.price.toFixed(2)} = $${p.cost.toFixed(2)}<br>`;
+        });
+        breakdownText += `<br>• Total Cost: $${totalCost.toFixed(2)}<br>`;
+        breakdownText += `• Total Shares: ${totalShares}<br>`;
+        breakdownText += `• Average Cost: $${totalCost.toFixed(2)} ÷ ${totalShares} = <strong>$${avgCost.toFixed(2)}</strong>`;
+        
+        // Display result
+        document.getElementById('costAvgResult').innerHTML = `
+            <h3>Calculation Result:</h3>
+            <div class="result-value neutral">
+                $${avgCost.toFixed(2)}
+            </div>
+            <p>Your average cost per share is <strong>$${avgCost.toFixed(2)}</strong></p>
+            <p>Total Shares: <strong>${totalShares}</strong> | Total Cost: <strong>$${totalCost.toFixed(2)}</strong></p>
+        `;
+        
+        document.getElementById('costAvgExplanation').innerHTML = breakdownText;
+        
+    } catch (error) {
+        document.getElementById('costAvgResult').innerHTML = `
+            <h3 style="color: #dc3545;">Error</h3>
+            <p>${error.message}</p>
+        `;
+        document.getElementById('costAvgExplanation').innerHTML = '';
+    }
+}
+
+/**
+ * Clear the Cost Average form
+ */
+function handleCostAvgClear() {
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById(`shares${i}`).value = '';
+        document.getElementById(`price${i}`).value = '';
+    }
+    document.getElementById('costAvgResult').innerHTML = '<p>Enter your purchase details above to calculate the average cost</p>';
+    document.getElementById('costAvgExplanation').innerHTML = '';
+    document.getElementById('shares1').focus();
+}
+
+// Event listeners for Cost Average Calculator
+document.addEventListener('DOMContentLoaded', () => {
+    const calculateCostAvgBtn = document.getElementById('calculateCostAvg');
+    const clearCostAvgBtn = document.getElementById('clearCostAvg');
+    
+    if (calculateCostAvgBtn) {
+        calculateCostAvgBtn.addEventListener('click', handleCostAvgCalculate);
+    }
+    
+    if (clearCostAvgBtn) {
+        clearCostAvgBtn.addEventListener('click', handleCostAvgClear);
+    }
+    
+    // Add Enter key support for Cost Avg inputs
+    for (let i = 1; i <= 4; i++) {
+        const sharesInput = document.getElementById(`shares${i}`);
+        const priceInput = document.getElementById(`price${i}`);
+        
+        if (sharesInput) {
+            sharesInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    handleCostAvgCalculate();
+                }
+            });
+        }
+        
+        if (priceInput) {
+            priceInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    handleCostAvgCalculate();
+                }
+            });
+        }
+    }
+});

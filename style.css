@@ -365,6 +365,10 @@ input[type="text"]:focus {
     .nav-logo {
         font-size: 1.2em;
     }
+
+    .input-row {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 600px) {
@@ -389,4 +393,16 @@ input[type="text"]:focus {
         padding: 4px 8px;
         font-size: 0.85em;
     }
+}
+
+/* Cost Average Calculator Input Rows */
+.input-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.input-row .input-group {
+    flex: 1;
+    margin-bottom: 0;
 }

@@ -13,6 +13,7 @@
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#" class="nav-link active" data-section="percent-difference">Percent Difference</a></li>
                 <li class="nav-item"><a href="#" class="nav-link" data-section="percent-from">Percent From</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-section="cost-avg">Cost Avg Calculation</a></li>
                 <li class="nav-item"><a href="#" class="nav-link" data-section="about">About</a></li>
             </ul>
         </div>
@@ -108,6 +109,75 @@
         </footer>
     </div>
 
+    <!-- Cost Avg Calculation Section -->
+    <div class="container section" id="cost-avg">
+        <header>
+            <h1>Cost Average Calculator</h1>
+            <p>Calculate your average cost when buying stocks at different prices</p>
+        </header>
+
+        <main class="cost-avg">
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="shares1">Purchase 1 - Shares:</label>
+                    <input type="number" id="shares1" placeholder="Number of shares" step="any" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="price1">Purchase 1 - Price:</label>
+                    <input type="number" id="price1" placeholder="Price per share" step="any" min="0">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="shares2">Purchase 2 - Shares:</label>
+                    <input type="number" id="shares2" placeholder="Number of shares" step="any" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="price2">Purchase 2 - Price:</label>
+                    <input type="number" id="price2" placeholder="Price per share" step="any" min="0">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="shares3">Purchase 3 - Shares:</label>
+                    <input type="number" id="shares3" placeholder="Number of shares" step="any" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="price3">Purchase 3 - Price:</label>
+                    <input type="number" id="price3" placeholder="Price per share" step="any" min="0">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="shares4">Purchase 4 - Shares:</label>
+                    <input type="number" id="shares4" placeholder="Number of shares" step="any" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="price4">Purchase 4 - Price:</label>
+                    <input type="number" id="price4" placeholder="Price per share" step="any" min="0">
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="calculateCostAvg" class="btn calculate">Calculate</button>
+                <button id="clearCostAvg" class="btn clear">Clear</button>
+            </div>
+
+            <div id="costAvgResult" class="result">
+                <p>Enter your purchase details above to calculate the average cost</p>
+            </div>
+
+            <div id="costAvgExplanation" class="explanation"></div>
+        </main>
+
+        <footer>
+            <p>Formula: Total Cost ÷ Total Shares</p>
+        </footer>
+    </div>
+
     <!-- About Section -->
     <div class="container section" id="about">
         <header>
@@ -121,6 +191,7 @@
                 <ul style="list-style: none; padding-left: 0;">
                     <li style="padding: 10px 0; border-bottom: 1px solid #eee;">📊 Percent Difference Calculator</li>
                     <li style="padding: 10px 0; border-bottom: 1px solid #eee;">➕ Percent From Calculator</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;">💰 Cost Average Calculator</li>
                 </ul>
                 <p style="margin-top: 30px; text-align: center; color: #666;">Built with ❤️ for stock enthusiasts</p>
             </div>
